@@ -3,24 +3,35 @@ import RangoliMandala from "./RangoliMandala";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-warm px-4">
-
-      {/* 🌸 LEFT BACKGROUND RANGOLI */}
+    <section
+      className="
+        relative overflow-hidden bg-gradient-warm px-4
+        min-h-screen
+        flex flex-col
+        items-start justify-start
+        md:items-center md:justify-center
+      "
+    >
+      {/* 🌸 LEFT BACKGROUND RANGOLI (DESKTOP ONLY) */}
       <div className="absolute left-[-180px] top-1/2 -translate-y-1/2 opacity-15 pointer-events-none hidden md:block">
         <RangoliMandala size="xl" />
       </div>
 
-      {/* 🌸 RIGHT BACKGROUND RANGOLI */}
+      {/* 🌸 RIGHT BACKGROUND RANGOLI (DESKTOP ONLY) */}
       <div className="absolute right-[-180px] top-1/2 -translate-y-1/2 opacity-15 pointer-events-none hidden md:block">
         <RangoliMandala size="xl" />
       </div>
 
       {/* 🧡 MAIN CONTENT */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, ease: "easeOut" }}
-        className="relative z-10 text-center max-w-4xl"
+        transition={{ duration: 0.8 }}
+        className="
+          relative z-10 w-full max-w-4xl text-center
+          mt-24 sm:mt-28
+          md:mt-0
+        "
       >
         {/* Invite text */}
         <p
@@ -59,7 +70,7 @@ const HeroSection = () => {
         </div>
 
         {/* Decorative line */}
-        <div className="w-28 sm:w-32 h-0.5 bg-gradient-festive mx-auto mb-8" />
+        <div className="w-24 sm:w-32 h-0.5 bg-gradient-festive mx-auto mb-8" />
 
         {/* Groom */}
         <div>
