@@ -3,95 +3,60 @@ import RangoliMandala from "./RangoliMandala";
 
 const HeroSection = () => {
   return (
-    <section
-      className="
-        relative bg-gradient-warm overflow-hidden px-4
-        min-h-screen
-        flex flex-col
-        justify-start
-        pt-24
-        md:pt-0 md:flex md:items-center md:justify-center
-      "
-    >
-      {/* 🌸 BACKGROUND RANGOLI */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* LEFT RANGOLI */}
-        <div
-          className="
-            absolute top-1/2 -translate-y-1/2 opacity-15
-            left-[-40px] sm:left-[-80px] md:left-[-180px]
-          "
-        >
+    <section className="relative bg-gradient-warm overflow-hidden px-4 min-h-screen flex items-center justify-center">
+      
+      {/* 🌸 DESKTOP BACKGROUND RANGOLI */}
+      <div className="hidden md:block absolute inset-0 pointer-events-none">
+        {/* Left */}
+        <div className="absolute left-[-180px] top-1/2 -translate-y-1/2 opacity-15">
           <RangoliMandala size="xl" />
         </div>
 
-        {/* RIGHT RANGOLI */}
-        <div
-          className="
-            absolute top-1/2 -translate-y-1/2 opacity-15
-            right-[-40px] sm:right-[-80px] md:right-[-180px]
-          "
-        >
+        {/* Right */}
+        <div className="absolute right-[-180px] top-1/2 -translate-y-1/2 opacity-15">
           <RangoliMandala size="xl" />
         </div>
       </div>
 
-      {/* 🧡 MAIN CONTENT */}
+      {/* 🌸 MOBILE BACKGROUND RANGOLI */}
+      <div className="md:hidden absolute inset-0 pointer-events-none">
+        {/* Top */}
+        <div className="absolute top-16 left-1/2 -translate-x-1/2 opacity-10 scale-90">
+          <RangoliMandala size="lg" />
+        </div>
+
+        {/* Bottom */}
+        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 opacity-10 scale-90">
+          <RangoliMandala size="lg" />
+        </div>
+      </div>
+
+      {/* 🧡 CONTENT */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        className="relative z-10 w-full max-w-4xl mx-auto text-center"
+        transition={{ duration: 0.8 }}
+        className="relative z-10 text-center max-w-4xl"
       >
-        {/* Invite text */}
-        <p
-          className="
-            font-elegant font-semibold text-secondary uppercase
-            text-sm sm:text-base md:text-lg
-            tracking-[0.3em]
-            mb-4
-          "
-        >
+        <p className="font-elegant text-secondary uppercase tracking-[0.3em] text-sm sm:text-base mb-4">
           You are cordially invited to the
         </p>
 
-        {/* Title */}
-        <div className="mb-6">
-          <h2 className="font-elegant text-primary text-xl sm:text-2xl md:text-3xl">
-            Pre-Wedding Celebration
-          </h2>
+        <h2 className="font-elegant text-primary text-xl sm:text-2xl md:text-3xl">
+          Pre-Wedding Celebration
+        </h2>
 
-          <h1
-            className="
-              font-script text-secondary
-              text-5xl sm:text-6xl md:text-7xl lg:text-8xl
-              mt-2 leading-tight
-            "
-          >
-            Rangoli
-          </h1>
-        </div>
+        <h1 className="font-script text-secondary text-5xl sm:text-6xl md:text-7xl lg:text-8xl mt-2">
+          Rangoli
+        </h1>
 
-        {/* Divider */}
-        <div className="w-28 sm:w-32 h-0.5 bg-gradient-festive mx-auto mb-8" />
+        <div className="w-28 h-0.5 bg-gradient-festive mx-auto my-8" />
 
-        {/* Groom */}
-        <p
-          className="
-            font-elegant uppercase tracking-widest
-            text-sm sm:text-base md:text-lg
-            text-muted-foreground mb-2
-          "
-        >
+        <p className="font-elegant text-muted-foreground uppercase tracking-widest text-sm sm:text-base mb-2">
           Celebrating the Groom
         </p>
 
-        <h2
-          className="
-            font-display text-gradient-festive
-            text-4xl sm:text-5xl md:text-7xl lg:text-8xl
-          "
-        >
+        <h2 className="font-display text-gradient-festive text-4xl sm:text-5xl md:text-7xl lg:text-8xl">
           Anand Mohan
         </h2>
       </motion.div>
