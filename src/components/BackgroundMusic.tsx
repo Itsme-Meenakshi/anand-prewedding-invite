@@ -5,43 +5,66 @@ import bgMusic from "@/assets/nazm-nazm.mp3";
 const BackgroundMusic = () => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [showHint, setShowHint] = useState(true);
 
   useEffect(() => {
-    const startMusic = () => {
-      if (!audioRef.current) return;
+    const audio = audioRef.current;
+    if (!audio) return;
 
-      audioRef.current.volume = 0.4;
-      audioRef.current.play().catch(() => {});
+    // Try autoplay muted (ALLOWED)
+    audio.muted = true;
+    audio.volume = 0.5;
+
+    audio.play()
+      .then(() => {
+        setIsPlaying(true);
+      })
+      .catch(() => {});
+
+    const unlockAudio = () => {
+      if (!audio) return;
+
+      audio.muted = false;
+      audio.play().catch(() => {});
       setIsPlaying(true);
+      setShowHint(false);
 
-      window.removeEventListener("click", startMusic);
-      window.removeEventListener("touchstart", startMusic);
+      window.removeEventListener("click", unlockAudio);
+      window.removeEventListener("touchstart", unlockAudio);
+      window.removeEventListener("scroll", unlockAudio);
     };
 
-    window.addEventListener("click", startMusic);
-    window.addEventListener("touchstart", startMusic);
+    // Any real interaction
+    window.addEventListener("click", unlockAudio, { once: true });
+    window.addEventListener("touchstart", unlockAudio, { once: true });
+    window.addEventListener("scroll", unlockAudio, { once: true });
 
     return () => {
-      window.removeEventListener("click", startMusic);
-      window.removeEventListener("touchstart", startMusic);
+      window.removeEventListener("click", unlockAudio);
+      window.removeEventListener("touchstart", unlockAudio);
+      window.removeEventListener("scroll", unlockAudio);
     };
   }, []);
 
   const toggleMusic = () => {
-    if (!audioRef.current) return;
+    const audio = audioRef.current;
+    if (!audio) return;
 
-    if (isPlaying) {
-      audioRef.current.pause();
+    if (audio.paused) {
+      audio.muted = false;
+      audio.play();
+      setIsPlaying(true);
     } else {
-      audioRef.current.play();
+      audio.pause();
+      setIsPlaying(false);
     }
-    setIsPlaying(!isPlaying);
   };
 
   return (
     <>
       <audio ref={audioRef} src={bgMusic} loop />
 
+      {/* Floating Music Button */}
       <button
         onClick={toggleMusic}
         className="fixed bottom-6 right-6 z-50 p-3 rounded-full
@@ -51,6 +74,15 @@ const BackgroundMusic = () => {
       >
         {isPlaying ? <Pause size={20} /> : <Music size={20} />}
       </button>
+
+      {/* Tap Hint (Mobile + Desktop) */}
+      {showHint && (
+        <div className="fixed bottom-20 right-6 z-50 text-xs
+                        bg-black/70 text-white px-3 py-2 rounded-full
+                        animate-pulse">
+          Tap anywhere for music 🎶
+        </div>
+      )}
     </>
   );
 };
