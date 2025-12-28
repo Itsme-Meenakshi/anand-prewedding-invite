@@ -46,9 +46,6 @@ const HeroSection = () => {
 
         {/* Title */}
         <div className="mb-6">
-          <h2 className="font-elegant text-xl md:text-3xl text-primary tracking-wide">
-            Pre-Wedding Celebration
-          </h2>
 
           <h1 className="font-script text-5xl md:text-7xl lg:text-8xl text-secondary mt-2">
             Rangoli

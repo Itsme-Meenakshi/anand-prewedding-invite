@@ -14,7 +14,7 @@ const events = [
     title: "Rangoli Night",
     description: "An evening of colours, music, dance, and joy.",
     date: "3 January 2026",
-    time: "5:30 PM - 8:00 PM",
+    time: "5:30 PM - 8:30 PM",
     venue: "Amrita Heritage",
     mapLink: "https://maps.app.goo.gl/LcjnxPGCBEmnxmqd7",
     icon: <Music className="w-6 h-6" />,

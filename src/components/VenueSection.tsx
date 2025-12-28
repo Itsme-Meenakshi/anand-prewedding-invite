@@ -110,7 +110,7 @@ const VenueSection = () => {
                 <div>
                   <Clock className="w-7 h-7 mx-auto text-primary mb-2" />
                   <p className="font-elegant text-lg md:text-xl">
-                    5:30 PM – 8:00 PM
+                    5:30 PM – 8:30 PM
                   </p>
                 </div>
               </div>
