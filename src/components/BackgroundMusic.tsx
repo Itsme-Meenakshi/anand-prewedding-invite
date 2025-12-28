@@ -74,15 +74,6 @@ const BackgroundMusic = () => {
       >
         {isPlaying ? <Pause size={20} /> : <Music size={20} />}
       </button>
-
-      {/* Tap Hint (Mobile + Desktop) */}
-      {showHint && (
-        <div className="fixed bottom-20 right-6 z-50 text-xs
-                        bg-black/70 text-white px-3 py-2 rounded-full
-                        animate-pulse">
-          Tap anywhere for music 🎶
-        </div>
-      )}
     </>
   );
 };
