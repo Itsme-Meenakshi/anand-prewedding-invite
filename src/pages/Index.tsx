@@ -4,21 +4,19 @@ import VenueSection from "@/components/VenueSection";
 import EventsTimeline from "@/components/EventsTimeline";
 import RSVPSection from "@/components/RSVPSection";
 import Footer from "@/components/Footer";
+import BackgroundMusic from "@/components/BackgroundMusic";
 
 const Index = () => {
-  useEffect(() => {
-    // Update page title
-    document.title = "Anand Mohan | Pre-Wedding Celebration";
-  }, []);
-
   return (
-    <main className="min-h-screen overflow-x-hidden">
+    <>
+      <BackgroundMusic />
+
       <HeroSection />
       <VenueSection />
       <EventsTimeline />
       <RSVPSection />
       <Footer />
-    </main>
+    </>
   );
 };
 
